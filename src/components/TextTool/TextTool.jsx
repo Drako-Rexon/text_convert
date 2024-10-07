@@ -15,6 +15,9 @@ const TextTool = () => {
       "Sentence case",
       "aLtErNaTiNg CaSe",
       "InVeRsInG cAsE",
+      "Clear",
+      "cAmel cAsing",
+      "esreveR gnirtS"
     ]);
   }, []);
 
@@ -45,8 +48,12 @@ const TextTool = () => {
         break; alternatingCase
       case 6: setInputText(alternatingCase(text));
         break;
-
-      // add more cases for other text modification functions as needed
+      case 7: setInputText('');
+        break;
+      case 8: setInputText(convertToCamelCase(text));
+        break;
+      case 9: setInputText(reverseString(text));
+        break;
 
       default:
         notify("The function is not implemented");
@@ -81,6 +88,16 @@ const TextTool = () => {
     document.body.removeChild(inputRef);
     notify('Copy to clipboard successfully');
   };
+
+  function convertToCamelCase(str) {
+    return str.split(' ')
+      .map(word => word.charAt(0).toLowerCase() + word.charAt(1).toUpperCase() + word.slice(2).toLowerCase())
+      .join(' ');
+  }
+
+  function reverseString(str) {
+    return str.split('').reverse().join('');
+  }
 
   function capitalizeEachWord(sentence) {
     sentence = sentence.toLowerCase();
@@ -193,13 +210,13 @@ const TextTool = () => {
   return (
 
     <div className='mx-60'>
-      //* error window
+      {/* // * error window */}
 
       <div>
         <ToastContainer theme="dark" />
       </div>
 
-      // * error window ends
+      {/* // * error window ends */}
       <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Put your text here:</label>
       <textarea value={inputText} onChange={handleTextInput} id="message" rows="10" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your text here..."><button
         type="button"
