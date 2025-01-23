@@ -1,0 +1,104 @@
+.calc-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #121212; /* Very dark gray for utility focus */
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+}
+
+.mode-select, .calc-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: #ffffff; /* Light mode input background */
+  color: #212529; /* Dark text for readability */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+:root[data-theme="dark"] .mode-select, 
+:root[data-theme="dark"] .calc-input {
+  background-color: #2e2e2e; /* Dark mode input background */
+  color: #ffffff; /* White text for readability */
+}
+
+.mode-select:hover {
+  border-color: var(--primary);
+}
+
+.calc-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.1);
+}
+
+.convert-btn {
+  width: 100%;
+  padding: 12px 24px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.convert-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  opacity: 0.9;
+}
+
+.convert-btn:active {
+  transform: translateY(0);
+}
+
+/* Add some spacing and container styles */
+.main-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Add some visual feedback for active states */
+.calc-input:focus, 
+.mode-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.1);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .calc-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .calc-input {
+    min-height: 150px;
+  }
+}
+
+/* Animation for mode change */
+.mode-select, .calc-input, .convert-btn {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 

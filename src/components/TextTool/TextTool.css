@@ -1,0 +1,97 @@
+.button-hover {
+  transition: all 0.3s ease;
+}
+
+.button-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.text-tool-container {
+  background-color: #f5f5f5; /* Very light gray for readability */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+.text-area {
+  width: 100%;
+  min-height: 200px;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: #ffffff; /* White background for input */
+  color: #212529; /* Dark text for readability */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.text-area:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.1);
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.tool-button {
+  padding: 0.8rem 1.2rem;
+  background-color: #1a1a1a; /* Darker background */
+  color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.tool-button:hover {
+  background-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.stats-container {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #1a1a1a; /* Darker background */
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+.stats-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stats-item:last-child {
+  border-bottom: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .text-tool-container {
+    padding: 1rem;
+  }
+  
+  .button-container {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+
+:root[data-theme="dark"] .text-tool-container {
+  background-color: #1e1e1e; /* Very dark gray for contrast */
+}
+
+:root[data-theme="dark"] .text-area {
+  background-color: #2e2e2e; /* Darker input background */
+  color: #ffffff; /* White text for readability */
+} 

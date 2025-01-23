@@ -1,0 +1,90 @@
+/* Base Variables */
+:root {
+  --transition-speed: 0.3s;
+  
+  /* Common colors */
+  --primary: #646cff;
+  --error: #ff4d4d;
+  --success: #4caf50;
+  --warning: #ff9800;
+}
+
+/* Light Theme */
+:root[data-theme="light"] {
+  /* Backgrounds */
+  --bg-primary: #2c2c2c;    /* Mid grey background */
+  --bg-secondary: #333333;   /* Slightly darker grey */
+  --bg-tertiary: #3d3d3d;   /* Slightly lighter grey */
+  
+  /* Text */
+  --text-primary: #ffffff;   /* White text */
+  --text-secondary: #e0e0e0; /* Slightly dimmed white */
+  --text-tertiary: #b0b0b0;  /* More dimmed white */
+  
+  /* Borders & Shadows */
+  --border-color: #404040;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  
+  /* Component specific */
+  --card-bg: #333333;
+  --input-bg: #2c2c2c;
+  --tooltip-bg: #ffffff;
+  --tooltip-text: #2c2c2c;
+}
+
+/* Dark Theme */
+:root[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-primary: #2c2c2c;    /* Same mid grey background */
+  --bg-secondary: #333333;
+  --bg-tertiary: #3d3d3d;
+  
+  /* Text */
+  --text-primary: #ffffff;   /* White text */
+  --text-secondary: #e0e0e0;
+  --text-tertiary: #b0b0b0;
+  
+  /* Borders & Shadows */
+  --border-color: #404040;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  
+  /* Component specific */
+  --card-bg: #333333;
+  --input-bg: #2c2c2c;
+  --tooltip-bg: #ffffff;
+  --tooltip-text: #2c2c2c;
+}
+
+/* Smooth theme transition */
+* {
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              border-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+/* Ensure text is always readable */
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}

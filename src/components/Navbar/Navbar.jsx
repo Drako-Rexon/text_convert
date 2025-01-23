@@ -1,20 +1,29 @@
-import React from 'react'
+import { Link } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
+import './Navbar.css';
 
 const Navbar = () => {
+  const { isDark, setIsDark } = useTheme();
+
   return (
-    <div className='flex justify-between py-4 px-6 bg-black'>
-      <h1 className='text-white'>Convert Case</h1>
+    <nav className="navbar" style={{ color: isDark ? 'white' : 'inherit' }}>
+      <div className="nav-brand">
+        <Link to="/" style={{ color: isDark ? 'white' : 'inherit' }}>TextTools</Link>
+      </div>
+      
+      <div className="nav-links">
+        <Link to="/" className="nav-link">Text Editor</Link>
+        <Link to="/calculator" className="nav-link">Programming Calc</Link>
+        
+        <button 
+          onClick={() => setIsDark(!isDark)} 
+          className="theme-toggle"
+        >
+          {isDark ? '🌞' : '🌙'}
+        </button>
+      </div>
+    </nav>
+  );
+};
 
-      <ul className='flex'>
-        <li className='mx-6 text-white'>converter app</li>
-        <li className='mx-6 text-white'>change font</li>
-        <li className='mx-6 text-white'>Change design</li>
-        <li className='mx-6 text-white'>Ai is here</li>
-        <li className='mx-6 text-white'>New feature (test)</li>
-      </ul>
-
-    </div>
-  )
-}
-
-export default Navbar
+export default Navbar;

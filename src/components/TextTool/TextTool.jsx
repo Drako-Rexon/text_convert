@@ -17,7 +17,13 @@ const TextTool = () => {
       "InVeRsInG cAsE",
       "Clear",
       "cAmel cAsing",
-      "esreveR gnirtS"
+      "esreveR gnirtS",
+      "Remove Extra Spaces",
+      "Format JSON",
+      "Remove Numbers",
+      "Remove Special Chars",
+      "Encode URL",
+      "Decode URL"
     ]);
   }, []);
 
@@ -53,6 +59,18 @@ const TextTool = () => {
       case 8: setInputText(convertToCamelCase(text));
         break;
       case 9: setInputText(reverseString(text));
+        break;
+      case 10: setInputText(textOperations.removeExtraSpaces(text));
+        break;
+      case 11: setInputText(textOperations.formatJSON(text));
+        break;
+      case 12: setInputText(textOperations.removeNumbers(text));
+        break;
+      case 13: setInputText(textOperations.removeSpecialChars(text));
+        break;
+      case 14: setInputText(textOperations.encodeURL(text));
+        break;
+      case 15: setInputText(textOperations.decodeURL(text));
         break;
 
       default:
@@ -206,6 +224,63 @@ const TextTool = () => {
   }
 
   // * end of lower function
+
+  const additionalStats = {
+    readingTime: (text) => Math.ceil(text.split(' ').length / 200) + ' min read',
+    paragraphCount: (text) => text.split(/\n\s*\n/).length,
+    uniqueWords: (text) => new Set(text.toLowerCase().match(/\b\w+\b/g)).size
+  }
+
+  const textOperations = {
+    // Remove extra spaces (including multiple spaces, tabs, and newlines)
+    removeExtraSpaces: (text) => {
+      return text
+        .replace(/\s+/g, ' ')      // Replace multiple spaces with single space
+        .replace(/^\s+|\s+$/g, '') // Remove leading and trailing spaces
+        .trim();
+    },
+
+    // Format JSON with proper indentation
+    formatJSON: (text) => {
+      try {
+        const parsed = JSON.parse(text);
+        return JSON.stringify(parsed, null, 2);
+      } catch (error) {
+        alert('Invalid JSON! Baby please check your input 🥺');
+        return text;
+      }
+    },
+
+    // Remove all numbers from text
+    removeNumbers: (text) => {
+      return text.replace(/[0-9]/g, '');
+    },
+
+    // Remove special characters but keep spaces and basic punctuation
+    removeSpecialChars: (text) => {
+      return text.replace(/[^a-zA-Z0-9\s.,!?-]/g, '');
+    },
+
+    // URL encode the text
+    encodeURL: (text) => {
+      try {
+        return encodeURIComponent(text);
+      } catch (error) {
+        alert('Encoding failed! Baby something went wrong 😢');
+        return text;
+      }
+    },
+
+    // URL decode the text
+    decodeURL: (text) => {
+      try {
+        return decodeURIComponent(text);
+      } catch (error) {
+        alert('Decoding failed! Baby the input might not be properly encoded 😢');
+        return text;
+      }
+    }
+  };
 
   return (
 
